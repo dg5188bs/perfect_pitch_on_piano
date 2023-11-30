@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554629051432",
+    "project_id": "perfect-pitch-on-piano",
+    "storage_bucket": "perfect-pitch-on-piano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554629051432:android:3c303ea5745691a629711d",
+        "android_client_info": {
+          "package_name": "com.example.perfect_pitch_on_piano"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFOXrduxpynTOUL1atCP0j0LdUtxqWdT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
