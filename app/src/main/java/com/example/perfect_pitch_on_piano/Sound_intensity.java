@@ -6,8 +6,6 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -68,7 +66,7 @@ public class Sound_intensity extends AppCompatActivity {
         executorService.execute(() -> {
             short[] buffer = new short[AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT)];
             audioRecord.startRecording();
-            while (!isDestroyed()) {
+            while (!isDestroyed() && audioRecord != null) {
                 int readSize = audioRecord.read(buffer, 0, buffer.length);
                 if (readSize > 0) {
                     double intensity = calculateSoundIntensity(buffer, readSize);
@@ -77,6 +75,7 @@ public class Sound_intensity extends AppCompatActivity {
             }
         });
     }
+
 
     private double calculateSoundIntensity(short[] buffer, int readSize) {
         double sum = 0;
@@ -112,7 +111,12 @@ public class Sound_intensity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, MY_PERMISSIONS_REQUEST_RECORD_AUDIO);
         } else {
             initializeAudioRecord();
-            startRecording();
+            if (audioRecord != null) {
+                startRecording();
+            } else {
+                Toast.makeText(this, "Failed to initialize AudioRecord", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 }

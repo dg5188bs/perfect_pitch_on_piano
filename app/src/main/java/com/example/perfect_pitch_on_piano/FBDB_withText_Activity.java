@@ -25,7 +25,6 @@ public class FBDB_withText_Activity extends AppCompatActivity {
     String str;
     String textid,text;
     String str2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
